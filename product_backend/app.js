@@ -1,0 +1,17 @@
+const express = require("express");
+const app = express();
+const cors = require("cors");
+require('dotenv').config();
+const port = process.env.PORT || 3000;
+
+const productRoutes= require('./routes/productRoutes');
+const Product= require('./models/Product');
+const db= require('./config/db')
+db();
+app.use(cors());
+app.use(express.json());
+app.use('/products',productRoutes);
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
+
