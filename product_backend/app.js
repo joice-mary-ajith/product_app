@@ -8,7 +8,9 @@ const productRoutes= require('./routes/productRoutes');
 const Product= require('./models/Product');
 const db= require('./config/db')
 db();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
 app.use(express.json());
 app.use('/products',productRoutes);
 app.listen(port, () => {
